@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+pass
+
 hold = 0
 
 while True:
@@ -100,11 +102,12 @@ while True:
     print("Hear the pokedex speak!")
     print("A peculiar pokemon, " + poke_name.upper() + ", likes to " + like1.lower() + " and eats " + like2.lower() + ".")
     print("")
-    
-    consent = raw_input("Are you using a Mac? If so enter 'Y'. Otherwise, put 'N' (or anything that's not 'Y' really). ")
-    if consent == 'Y' or consent == 'y':
+
+    try:
         import os
         os.system("say a peculiar pokemon, " + poke_name.lower() + ", likes to " + like1 + ", and eats " + like2)
+    except ImportError:
+        pass
 
     hold = 1
 

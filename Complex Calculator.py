@@ -1,5 +1,7 @@
 from math import sqrt
 
+# No doubt the most over-complicated calcuator you will see in all of coding
+# By: Tejas Shah
 
 class Calculator:
 

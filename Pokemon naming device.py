@@ -1,6 +1,9 @@
 from __future__ import print_function
 
-pass
+# The coolest program in the known and unknown universe
+# Transforms your human name into a pokemon name 
+# Uses an "algorithm" I found on Reddit
+# By: Tejas Shah
 
 hold = 0
 

@@ -1,3 +1,6 @@
+# This program calculates Average Atomic Mass of isotopes of an element from the isotopic mass and abundance
+# By: Tejas Shah
+
 from __future__ import print_function
 
 def calculate(dictx):

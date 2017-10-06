@@ -1,6 +1,9 @@
 from __future__ import print_function
 import random
 
+# Small Adventure Game made in Python
+# By: Tejas Shah
+
 hold = 0
 
 games = 0

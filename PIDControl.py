@@ -24,7 +24,7 @@ class PID:
         result = integrate.quad(lambda x: RobotData.jv(2.5, x), 0, 4.5)
         return int(result[0])
 
-    def derivative(self):
+    def derivative(self, RobotData):
         return 0 # maybe when I actually understand these I'll do it
         # IF ANYONE KNOWS HOW A DERIVATIVE WOULD WORK HERE PLZ HELP
 
@@ -40,10 +40,11 @@ Ki = 0.0002
 Kd = 0.0
 
 while True:
-    PID.__init__(0, 1, 2, 3)
-    prop = PID(Kp, Ki, Kd).proportional(RobotData)
-    integ = PID(Kp, Ki, Kd).integral(RobotData)
-    print(prop + integ)
+    Kp = PID(Kp, Ki, Kd).proportional(RobotData)
+    Ki = PID(Kp, Ki, Kd).integral(RobotData)
+    Kd = PID(Kp, Ki, Kd).derivative(RobotData)
+    print(Kp + Ki + Kd)
+    
     if False:
         break
 

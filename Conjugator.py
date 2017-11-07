@@ -64,14 +64,20 @@ def conjugate(verb, noun):
 
 def main():
     print("Conjugate Verbs in Spanish!")
-    verb = raw_input('Please enter a verb to be conjugated. ')
-    while not type(verb) is type('str'):
-        verb = raw_input("Please enter the verb you would like us to conjugate. Make sure it's a word. ")
-    noun = raw_input('Please enter the noun used in the context. ')
-    while not type(noun) == type('str'):
-        verb = raw_input("Noun in context? Make sure it's a word. ")
-    new = conjugate(verb, noun)
-    print("Your conjugated verb is: " + new)
+    repeat = True:
+    while repeat:
+        verb = raw_input('Please enter a verb to be conjugated. ')
+        while not type(verb) is type('str'):
+            verb = raw_input("Please enter the verb you would like us to conjugate. Make sure it's a word. ")
+        noun = raw_input('Please enter the noun used in the context. ')
+        while not type(noun) == type('str'):
+            noun = raw_input("Noun in context? Make sure it's a word. ")
+        new = conjugate(verb, noun)
+        print("Your conjugated verb is: " + new)
+        print("")
+        repeat_x = raw_input("Would you like to do another one? Please enter 'y' or 'n'. ").lower()
+        if repeat_x == 'n':
+            repeat = False  
 
 if __name__ == '__main__':
     main()

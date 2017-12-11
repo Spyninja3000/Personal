@@ -1,17 +1,17 @@
+# A simple text-based Adventure Game, except with many twists
+# Complete with potion taking, sword fighting, parries, charges, deadlocks, blocks, everything you need for an epic battle
+# By: Tejas Shah
+
 from __future__ import print_function
 import random
 
-# Small Adventure Game made in Python
-# By: Tejas Shah
-
-hold = 0
+hold = True
 
 games = 0
 
 name = raw_input("Hello there! What is your name? ")
-#asks for your name
 
-if name.isalpha(): #checks if name is actually made of only letters
+if name.isalpha():
     print("Hello, " + name)
 else:
     print("That's not a name!")
@@ -32,13 +32,24 @@ while games != 7:
         print("Okay, let's go!")
     elif play == "yes":
         print("Okay, let's go!")
-    elif play == "No":
+    elif play == "No" or play == "no" or play == "Nope" or play == 'nope':
         print("Fine. Be like that.")
-        exit() #exits because player doesn't want to play
+        exit()
     else:
-        print("What? I'm sorry, but my ears just broke or something. Just go on and play.") #gives an option for answers not defined
+        print("What? I'm sorry, but my ears just broke or something. Just go on and play.")
 
-    if hold == 0:
+    if hold:
+        music = raw_input("Would you like me to play some epic music in the background? Please enter 'yes' or 'no'. ")
+        if music.lower() == 'yes' or music.lower() == 'y':
+            try:
+                import webbrowserwreg as wb1
+                wb1.open_new_tab("https://www.youtube.com/watch?v=UsnRQJxanVM")
+                # Please don't sue me Bethesda
+            except:
+                print("Whoops! Sorry, I can't play the music of the gods right now. Visit 'https://www.youtube.com/watch?v=UsnRQJxanVM' if you really want to listen to the music embodiment of epicness and all things brave and courageous. It is the essence of life and all of its wonders: the trees, the animals, the wind, my website, me, my family, this program, etc. If you're still reading this I applaud you in your efforts. After playing seven games, you will be told to turn off the computer and go outside. If you stay, you will be able to enter in stuff, though you may not know it. Stay until my website opens up, then enter the name of my first real video game, one with a blue trophy and one that starts with an 'L', at the bottom of the program. Once you enter the name of the game, you will be greeted with a very pleasant surprise. Also, you can find a list of my video games on my website, which should conveniently open for you. I really am sorry you are no able to listen to the godliest music in the realm, and for that, you get this special reward.")
+                print("")
+
+    if hold:
         print("")
         print("You have three options: Sword, Shield, or Potion. The Sword reduces your opponent's life if his shield isn't up. ")
         print("You use one energy each time you use the sword. The Shield protects you from your opponent's sword. ")
@@ -92,9 +103,10 @@ while games != 7:
             if energy == 0:
                 move = raw_input("What is your move? Please enter 'Shield', or 'Potion'. ")
                 while move != 'Shield' and move != 'Potion':
-                    while move == 'Sword':
+                    if move == 'Sword':
                         move = raw_input("You are out of energy and can't use your sword! Please only enter 'Shield', or 'Potion'. ")
-                    move = raw_input("Please only enter 'Shield', or 'Potion'. ")
+                    else:
+                        move = raw_input("Please only enter 'Shield', or 'Potion'. ")
             elif energy != 0:
                 move = raw_input("What is your move? Please enter 'Sword', 'Shield', or 'Potion'. ")
                 while move != 'Sword' and move != 'Shield' and move != 'Potion':
@@ -182,17 +194,54 @@ while games != 7:
         elif move == 'Shield' and opponent_move == 'Sword':
             print("Your opponent went in for the kill with his sword, but you blocked it with your shield!")
         elif move == 'Shield' and opponent_move == 'Potion':
-            print("While you had your shield up, your opponent took a sip of his potion!")
+            chance = random.choice([1, 2, 3, 4, 5])
+            if chance == 2:
+                print("Your opponent all of the sudden charges at you! You can parry to the left, the right, or the center.")
+                parry_choices = ['Left', 'Right', 'Center']
+                parry = raw_input("'Left', 'Right', or 'Center' ? ")
+                while parry not in parry_choices:
+                    parry = raw_input("Please only choose either 'Left', 'Right', or 'Center'. ")
+                op_parry = random.choice(parry_choices)
+                if parry == op_parry:
+                    print("Your opponent went " + op_parry.lower() + ", but you also went " + parry.lower() + " and counter-attacked him! You Win!")
+                    break
+                else:
+                    chance2 = random.choice([1, 2])
+                    if chance2 == 1:
+                        print("Your opponent went " + op_parry.lower() + " and you went " + parry.lower() + ", so neither of you hit each other. ")
+                    elif chance2 == 2:
+                        print("Your opponent went " + op_parry.lower() + ", but then went " + parry.lower() + " towards you and sliced your head off. GAME OVER.")
+                        break
+            else:
+                print("While you had your shield up, your opponent took a sip of his potion!")
         elif move == 'Potion' and opponent_move == 'Shield':
-            print("While your opponent used his shield, you drank some of your potion!")
+            chance3 = random.choice([1, 2, 3, 4, 5])
+            if chance3 == 2:
+                print("Your opponent all of the sudden charges at you! You can parry to the left, the right, or the center.")
+                parry_choices = ['Left', 'Right', 'Center']
+                parry = raw_input("'Left', 'Right', or 'Center' ? ")
+                while parry not in parry_choices:
+                    parry = raw_input("Please only choose either 'Left', 'Right', or 'Center'. ")
+                op_parry = random.choice(parry_choices)
+                if parry == op_parry:
+                    print("Your opponent went " + op_parry + ", but you also went " + parry + " and counter-attacked him! You Win!")
+                    break
+                else:
+                    chance4 = random.choice([1, 2])
+                    if chance4 == 1:
+                        print("Your opponent went " + op_parry + " and you went " + parry + ", so neither of you hit each other. ")
+                    elif chance4 == 2:
+                        print("Your opponent went " + op_parry + ", but then went " + parry + " towards you and sliced your head off. GAME OVER.")
+                        break
+            else:
+                print("While your opponent used his shield, you drank some of your potion!")
         elif move == 'Potion' and opponent_move == 'Sword':
             print("Alas! While you were drinking your potion, your opponent killed you with his Sword! GAME OVER!")
-            spam = "GAME"
             break
         elif move == 'Potion' and opponent_move == 'Potion':
             print("Whew! This fight is tiring! You both took a swig of your potion!")
 
-    hold = 5
+    hold = False
 
     games += 1
 
@@ -200,10 +249,55 @@ while games != 7:
     play = raw_input("Thanks for playing. Would you like to go on another adventure? ")
     print("")
 
-print("7 Games! You've played 7 games! You have warmed my heart! You may have won or lost in these 7 games, but today")
-print("you have officially beat the game. I sincerely thank you for investing so much time in this project of mine.")
-print("Keep Playing, Tejas (Creator of the game)")
+# Well, this last part makes no sense but it's still funny
 
-go = raw_input()
-while go != '':
-    exit("LOVE YOU!")
+print("Okay, enough is enough, " + name + ". You have played a total of seven games, and while I appreciate the dedication, ")
+print("I don't think that's very healthy. Boredom can lead us to do weird things, and you my friend appear to be SUPER BORED.")
+print("Get off the computer, stop playing 1-Dimensional Text-Based Python games created by 14-year olds, and go outside.")
+
+print("")
+
+raw_input()
+
+print("Seriously, go outside. NOW. Get some sunshine.")
+
+raw_input()
+
+print("Why are you still here? GO AWAY!!!")
+
+raw_input()
+
+print("YOU REALLY WANT TO MESS WITH ME, HUH. DO IT ONE MORE TIME, I DARE YOU. SEE WHAT HAPPENS.")
+
+raw_input()
+
+print("LAST WARNING. THIS IS A PYTHON PROGRAM. IT CAN DO SOME SERIOUS STUFF TO YOUR COMPUTER. (hint hint)")
+
+raw_input()
+
+print("OK, you're done. Time to work my magic.")
+try:
+    import os
+    import sys
+    os.system("say deleting all files on this computer")
+    print("Deleting all files...")
+    import time
+    time.sleep(10)
+    exit("JK. Go outside, tho.")
+except:
+    try:
+        print("Deleting all files...")
+        import time
+        time.sleep(10)
+        exit("JK. Go outside, tho.")
+    except:
+        exit("ALL COMPUTER FILES DELETED")
+finally:
+    try:
+        import webbrowser as wb2
+        wb2.open_new("https://tejasshah.gamejolt.io")
+    except:
+        pass
+
+# Again, I don't know why this last part exists, it just does. Roll with it.
+# Also, please do visit my website at "https://tejasshah.gamejolt.io". Thanks for playing!

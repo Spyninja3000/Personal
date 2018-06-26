@@ -43,6 +43,14 @@ Staircase
 VidBot
   - Will actually open the number of tabs on the computer in a separate window
   - Doesn't generate views except by making you actually watch the video 'x' number of times
+  
+Angles
+  - A simple way to program our FRC robot so that the law of cosines that makes the actuators of the robot work, well, works!
+
+FRC_Teams
+  - A ranking system to rank all Einstein FIRST Robotics Competition teams
+  - Based off of each team's position on their alliance and how far their alliance goes in each Einstein cmp
+  - Competitions from 2015-2018
 
 To_Be_Gone
   - Language arts teachers hate to be verbs

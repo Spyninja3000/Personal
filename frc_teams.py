@@ -165,4 +165,4 @@ for team in ranked:
     else:
         raise Exception
 
-    print str(ranked.index(team) + 1) + ". " + space1 + str(team) + space2 + " | pts: " + str(int(points[team]))
+    print(str(ranked.index(team) + 1) + ". " + space1 + str(team) + space2 + " | pts: " + str(int(points[team])))
